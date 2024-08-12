@@ -166,35 +166,41 @@ const HomeComponent = () => {
   </div>
   {/* IMAGE */}
   <div className="container mx-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-  <div className="flex flex-row justify-around items-center bg-blue-950 p-8 w-[450px] h-[250px]">
-  <h3 className="text-white text-center mt-4">Little Enote</h3>
-    <p className="text-white text-center">$39</p>
+  <div className="flex flex-row justify-evenly items-center bg-blue-950 p-8 w-[450px] h-[250px]">
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-white  text-2xl font-bold mt-4">Little Enote</h3>
+    <p className="text-white text-xl ">$39</p>
     <button className="bg-white text-blue-500 hover:bg-blue-400 text-sm font-medium rounded-md px-4 py-2 mt-4">
       Shop Now
     </button>
+    </div>
     <img src={CarSeat} alt="Little Enote" className="w-50 h-[200px] right-0" />
   </div>
-  <div className="flex flex-col items-center bg-gray-100 p-8 w-[450px] h-[250px]">
-    <img src="/path/to/stocck-xplory.png" alt="Stokke Xplory" className="w-40 h-40" />
-    <h3 className="text-gray-800 text-center mt-4">Stokke Xplory</h3>
-    <p className="text-gray-800 text-center">$299</p>
-    <button className="bg-gray-800 text-white hover:bg-gray-700 text-sm font-medium rounded-md px-4 py-2 mt-4">
+  <div className="flex flex-row justify-evenly items-center bg-gray-200 p-8 w-[450px] h-[250px]">
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-gray-800  text-2xl font-bold mt-4">Stoke Xplory</h3>
+    <p className="text-gray-800 text-xl ">$299</p>
+    <button className="bg-blue-950 text-white hover:bg-blue-400 text-sm font-medium rounded-md px-4 py-2 mt-4">
       Shop Now
     </button>
+    </div>
+    <img src={CarSeat} alt="Little Enote" className="w-50 h-[200px] right-0" />
   </div>
-  <div className="flex flex-col items-center bg-gray-300 p-8 w-[450px] h-[250px]">
-    <img src="/path/to/minimita.png" alt="Minimita" className="w-24 h-24" />
-    <h3 className="text-gray-800 text-center mt-4">Minimita</h3>
-    <p className="text-gray-800 text-center">$49</p>
-    <button className="bg-gray-800 text-white hover:bg-gray-700 text-sm font-medium rounded-md px-4 py-2 mt-4">
+  <div className="flex flex-row justify-evenly items-center bg-gray-500 p-8 w-[450px] h-[250px]">
+  <div className="flex flex-col justify-center items-center">
+    <h3 className="text-white  text-2xl font-bold mt-4">Minimita</h3>
+    <p className="text-white text-xl ">$49</p>
+    <button className="bg-white text-blue-500 hover:bg-blue-400 text-sm font-medium rounded-md px-4 py-2 mt-4">
       Shop Now
     </button>
+    </div>
+    <img src={CarSeat} alt="Little Enote" className="w-50 h-[200px] right-0" />
   </div>
 </div>
 {/* FEATURED PRODUCT */}
 <div className="container mx-auto mt-[70px]">
   <div className="flex justify-center items- mb-8 gap-8">
-    <button className="bg-blue-500 text-white px-4 py-3 w-[150px] rounded-3xl">Featured</button>
+    <button className="bg-gray-200 text-gray-700 px-4 py-3 w-[150px] rounded-3xl">Featured</button>
     <button className="bg-gray-200 text-gray-700 px-4 py-3 w-[150px] rounded-3xl">On Sale</button>
     <button className="bg-gray-200 text-gray-700 px-4 py-3 w-[150px] rounded-3xl">Bestsellers</button>
     <button className="bg-gray-200 text-gray-700 px-4 py-3 w-[150px] rounded-3xl">Latest</button>

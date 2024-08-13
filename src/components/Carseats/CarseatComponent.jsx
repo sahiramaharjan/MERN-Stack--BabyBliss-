@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import BabyBliss from "../Images/BabyBliss.png";
 import balanceWonder from './balance wonder.png'
 import coffeeMaker from './coffee maker.png'
 import alphabet from './alphabet.png'
@@ -6,25 +8,6 @@ import piano from './piano.png'
 
 
 function CarseatComponent() {
-  const [colors, setColors] = useState({
-    brown: 1,
-    gray: 1,
-    green: 2,
-    red: 4,
-    white: 1,
-  });
-  const [priceRange, setPriceRange] = useState([40, 100]);
-
-  const handleColorFilter = (color) => {
-    // Handle color filter logic here
-    console.log('Selected color:', color);
-  };
-
-  const handlePriceFilter = (value) => {
-    // Handle price filter logic here
-    console.log('Price range:', value);
-  };
-
   const products = [
     {
       id: 1,
@@ -84,57 +67,12 @@ function CarseatComponent() {
       },
   ];
   return (
-    <div className='flex bg-[#e8f5f6]'>
-    <div className="flex flex-col w-[250px] bg-white m-5 p-5">
-      <div className="flex flex-col space-y-2">
-        <h3 className="text-lg font-bold">COLORS</h3>
-        <div className="flex flex-wrap">
-          <div className="flex items-center mr-2">
-            <div className="w-4 h-4 rounded-full bg-brown" />
-            <span>Brown ({colors.brown})</span>
-          </div>
-          {/* ... other color options */}
-        </div>
-      </div>
-      <div className="flex flex-col space-y-2 mt-4">
-        <h3 className="text-lg font-bold">PRICE</h3>
-        <div className="flex items-center">
-          <span>$40</span>
-          <input type="range" min={40} max={100} value={priceRange} onChange={(e) => handlePriceFilter(e.target.value)} className="flex-grow mx-2" />
-          <span>$100</span>
-        </div>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-4">Filter</button>
-      </div>
-      <div className="mt-8">
-        <h3 className="text-lg font-bold">TOP RATED PRODUCTS</h3>
-        <div className="flex flex-col gap-2">
-          {/* Product cards here */}
-          <div className="border p-4">
-            <img src="/path/to/product-image.jpg" alt="Product image" className="w-full h-40 object-cover mb-2" />
-            <h4 className="text-lg font-semibold">Stokke Scoot Stroller</h4>
-            <p className="text-gray-500">in Slate Blue</p>
-            <p className="text-gray-500">Price: $45</p>
-          </div>
-          <div className="border p-4">
-            <img src="/path/to/product-image.jpg" alt="Product image" className="w-full h-40 object-cover mb-2" />
-            <h4 className="text-lg font-semibold">Stokke Scoot Stroller</h4>
-            <p className="text-gray-500">in Slate Blue</p>
-            <p className="text-gray-500">Price: $45</p>
-          </div>
-          <div className="border p-4">
-            <img src="/path/to/product-image.jpg" alt="Product image" className="w-full h-40 object-cover mb-2" />
-            <h4 className="text-lg font-semibold">Stokke Scoot Stroller</h4>
-            <p className="text-gray-500">in Slate Blue</p>
-            <p className="text-gray-500">Price: $45</p>
-          </div>
-        </div>
-      </div>
-    </div>
+   <>
     <div className="container mx-auto bg-white m-5 p-5">
-      <h2 className="text-2xl font-bold text-center mb-4">Activity</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h1 className="text-4xl font-bold text-center mb-4">Car Seats Section</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {products.map((product) => (
-          <div key={product.id} className="border border-gray-200 p-4">
+          <div key={product.id} className="border border-gray-400 p-4 w-[350px] h-[350px] m-7 shadow-lg rounded-lg">
           {product.discount && (
               <span className="bg-red-200 text-red-700 px-2 py-1 ml-[238px] rounded-full">- {product.discount}%</span>
             )}
@@ -146,7 +84,52 @@ function CarseatComponent() {
         ))}
       </div>
     </div>
+
+      {/* FOOTER */}
+      <div className="container mx-auto">
+      <div className="grid grid-cols-4 gap-4">
+        <div className="flex flex-col items-start">
+        <Link to="/" className="flex items-center">
+                <img src={BabyBliss} alt="Logo" className="h-[200px] w-[250px] " />
+              </Link>
+          <p>555 California str. Suite 100</p>
+          <p>San Francisco, CA 94107</p>
+          <p>1-800-312-2121</p>
+          <p>1-800-310-1010</p>
+          <p>babybliss@yahoo.com</p>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-4">PRODUCTS</h2>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-4">FEATURED</h2>
+          <div className="flex flex-col space-y-2">
+            {products.map((product) => (
+              <div key={product.id} className="flex items-center">
+                <img src={product.image} alt={product.name} className="w-10 h-10 mr-2" />
+                <span>{product.name}</span>
+                <span className="ml-2 text-gray-500">${product.price}</span>
+                {product.status && <span className="ml-2 text-red-500">{product.status}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-4">ON SALE</h2>
+          {/* On sale products here */}
+        </div>
+      </div>
     </div>
+    <div className='flex justify-between my-5 border-t-2 p-5'>
+    <p>© Copyright 2021. BabyBliss-Essential for babies</p>
+    <div>
+    <i class="ri-facebook-circle-fill text-2xl mr-2 hover:text-blue-500"></i>
+    <i class="ri-instagram-fill text-2xl mr-2 hover:text-amber-800"></i>
+    <i class="ri-twitter-x-fill text-2xl mr-2 hover:text-blue-950"></i>
+    <i class="ri-tiktok-fill text-2xl mr-2"></i>
+    </div>
+    </div>
+    </>
   );
 }
 

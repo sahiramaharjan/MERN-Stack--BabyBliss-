@@ -8,6 +8,7 @@ import BathComponent from "./components/Bath/BathComponent";
 import ClothingComponent from "./components/Clothing/ClothingComponent";
 import FeedingComponent from "./components/Feeding/FeedingComponent";
 import CarseatComponent from "./components/Carseats/CarseatComponent";
+import ProfileComponent from "./components/Profile/ProfileComponent";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
             <Route path="/login" element={<LoginComponent />} />
             <Route path="/signup" element={<RegisterComponent />} />
+            <Route path="/profile" element={<ProfileComponent/>} />
           </Routes>
         </Router>
       </div>

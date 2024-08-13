@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import BabyBliss from "../Images/BabyBliss.png";
@@ -7,6 +7,7 @@ import BabyBliss from "../Images/BabyBliss.png";
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [menu, setMenu] = useState("home");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
 
@@ -98,7 +99,7 @@ function NavBar() {
                             <button className="block text-md px-2 py-2">Log Out</button>
                           </li>
                           <li>
-                          <button className="block text-md px-2 py-2">My Profile</button>
+                          <button onClick={navigate("/profile")} className="block text-md px-2 py-2">My Profile</button>
                           </li>
                           {authState.userRole === "admin" && (
                             <li className="hover:text-blue-500 font-semibold transition duration-300">

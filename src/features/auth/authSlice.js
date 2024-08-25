@@ -22,7 +22,7 @@ const authSlice = createSlice({
       state.token = null;
       localStorage.removeItem('token');
     },
-    setToken(state, action) {
+    setToken(state, action) { // overriding token
       state.token = action.payload.token;
     },
   },

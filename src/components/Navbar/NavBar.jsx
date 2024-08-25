@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
 import BabyBliss from "../Images/BabyBliss.png";
@@ -8,6 +8,15 @@ function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [menu, setMenu] = useState("home");
   const navigate = useNavigate();
+  const goToWishlist=()=>{
+    navigate("/wishlist");
+  }
+  const goToCart=()=>{
+    navigate("/cart");
+  }
+  const goToProfile=()=>{
+    navigate("/profile");
+  }
   const dispatch = useDispatch();
   const authState = useSelector((state) => state.auth);
 
@@ -25,7 +34,7 @@ function NavBar() {
             <div className="flex space-x-3">
               {/* Primary Navbar items */}
               <div className="hidden md:flex items-center space-x-9">
-                <Link
+              <Link
                   to="/"
                   onClick={() => setMenu("home")}
                   className="py-4 px-2 text-gray-600 font-bold hover:text-blue-500 transition duration-300"
@@ -33,6 +42,8 @@ function NavBar() {
                   HOME
                   {menu === "home" && <hr className="border-none w-[100%] h-1 rounded-2xl bg-blue-900" />}
                 </Link>
+                {authState.userRole === "user" &&(
+                <>
                 <Link
                   to="/activity"
                   onClick={() => setMenu("activity")}
@@ -73,13 +84,32 @@ function NavBar() {
                   FEEDING
                   {menu === "feeding" && <hr className="border-none w-[100%] h-1 rounded-2xl bg-blue-900" />}
                 </Link>
+                </>
+              )}
+              {authState.userRole === "admin" && (
+                <>
+                  <Link
+                    to="/category"
+                    className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
+                  >
+                    Category
+                  </Link>
+                  <Link
+                    to="/addproduct"
+                    className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
+                  >
+                    Add Product
+                  </Link>
+                </>
+              )}
               </div>
             </div>
             {/* Secondary Navbar items */}
             <div className="hidden md:flex items-center space-x-3">
               {/* Wishlist */}
-              <button className="p-2 hover:text-blue-500 transition duration-300">
-                <i className="ri-heart-add-2-fill text-2xl"></i>
+              <button onClick={() => goToWishlist()} className="p-2 hover:text-blue-500 transition duration-300">
+                <i className="ri-heart-add-2-fill text-2xl">
+                </i>
               </button>
               {/* User Log */}
               <div className="relative flex flex-col items-center justify-center w-[50px] h-[50px]">
@@ -97,9 +127,6 @@ function NavBar() {
                             onClick={() => dispatch(logout())}
                           >
                             <button className="block text-md px-2 py-2">Log Out</button>
-                          </li>
-                          <li>
-                          <button onClick={navigate("/profile")} className="block text-md px-2 py-2">My Profile</button>
                           </li>
                           {authState.userRole === "admin" && (
                             <li className="hover:text-blue-500 font-semibold transition duration-300">
@@ -128,7 +155,7 @@ function NavBar() {
                 )}
               </div>
               {/* Cart */}
-              <button className="p-2 hover:text-blue-500 transition duration-300">
+              <button onClick={() => goToCart()} className="p-2 hover:text-blue-500 transition duration-300">
                 <i className="ri-shopping-cart-2-fill text-2xl"></i>
               </button>
             </div>
